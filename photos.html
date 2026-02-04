@@ -19,18 +19,46 @@
 
 
 <main>
-<section>
-<h2>Photography Portfolio</h2>
-<p>Here is a selection of my photography work.</p>
+  <h1>Photography </h1>
 
+  <section id="nature">
+    <h2>Nature</h2>
+    <div class="photo-grid">
+      <div class="photo-item">
+        <a href="#img1">
+          <img src="images/Schlossberg.jpg" alt="Schlossberg Graz">
+        </a>
+      </div>
+    </div>
+  </section>
 
-<div class="photo-grid">
-<img src="images/Schlossberg.jpg" alt="Schlossberg Graz">
-<img src="images/Swan.jpg" alt="Swan Photography">
-<!-- Add more images as needed -->
-</div>
-</section>
+  <section id="birds">
+    <h2>Birds</h2>
+    <div class="photo-grid">
+      <div class="photo-item">
+        <a href="#img2">
+          <img src="images/Swan.jpg" alt="Swan Photography">
+        </a>
+      </div>
+    </div>
+  </section>
 </main>
+
+<div id="img1" class="lightbox">
+  <a href="#!" class="lightbox-close"></a>
+  <div class="lightbox-content">
+    <img src="images/Schlossberg.jpg" alt="Schlossberg Graz">
+    <a href="#!" class="close-button">&times;</a>
+  </div>
+</div>
+
+<div id="img2" class="lightbox">
+  <a href="#!" class="lightbox-close"></a>
+  <div class="lightbox-content">
+    <img src="images/Swan.jpg" alt="Swan Photography">
+    <a href="#!" class="close-button">&times;</a>
+  </div>
+</div>
 
 
 </body>

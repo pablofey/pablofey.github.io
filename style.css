@@ -1,4 +1,4 @@
-/* Minimal + Creative Portfolio Theme */
+
 
 :root {
   --bg: #0b0d12;
@@ -13,42 +13,28 @@
   box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(circle at 20% 20%, #121827, var(--bg));
-  color: var(--text);
-}
-body::before {
-  content: '';
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 25% 25%, #ff4d6d33, transparent 30%),
-              radial-gradient(circle at 75% 75%, #4dffcc33, transparent 30%);
-  pointer-events: none;
-  z-index: -1;
-  animation: rotateBG 60s linear infinite;
+html {
+  min-height: 100%;
+  background: radial-gradient(circle at 20% 20%, #121827, #0b0d12) no-repeat center center fixed;
+  background-size: cover;
 }
 
-@keyframes rotateBG {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  height: auto; 
 }
-@media screen and (max-width: 65rem) {
-  body {
-    background-color: white;
-  }
+
+
+
 
   #cv {
     padding: 2rem;
     margin: 0 auto;
     box-shadow: none;
   }
-}
 
 html, body {
   margin: 0;
@@ -173,7 +159,76 @@ h2 {
   transform: scale(1.03);
   box-shadow: 0 15px 40px rgba(0,0,0,0.45);
 }
+/* Ensure the overlay covers EVERYTHING and stays at the top */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(11, 13, 18, 0.98); /* High opacity so images don't bleed through */
+  backdrop-filter: blur(10px);
+  z-index: 9999; /* Very high to stay above the grid */
+  justify-content: center;
+  align-items: flex-start; /* Keeps it at the top as requested */
+  padding: 40px 20px;
+}
 
+.lightbox:target {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  /* This prevents the collision with the bottom */
+  max-height: 90vh; 
+  display: flex;
+  justify-content: center;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 85vh; /* Limits height so it never hits the bottom */
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Keeps the photo's original shape */
+  border-radius: 8px;
+  box-shadow: var(--glow);
+}
+
+/* Fix the 'weird line' in background */
+html {
+  background: radial-gradient(circle at 20% 20%, #121827, #0b0d12) no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Close Area (clicking outside the image) */
+.lightbox-close {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+/* X Button */
+.close-button {
+  position: fixed;
+  top: 20px;
+  right: 30;
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+
+.close-button:hover {
+  color: var(--accent);
+}
 .social-links {
   display: flex;
   gap: 1rem;
