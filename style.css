@@ -256,6 +256,12 @@ html {
   opacity: 0.9;
 }
 
+.lightbox-content {
+  transition: transform 0.25s ease;
+  will-change: transform;
+  touch-action: pan-y;
+}
+
 /*Arrow styling*/
 
 .nav-arrow {
@@ -316,3 +322,4 @@ html {
   section { padding: 2rem; }
   .hero h1 { font-size: 3rem; }
 }
+
