@@ -165,8 +165,7 @@ h2 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background: rgba(11, 13, 18, 0.98); /* High opacity so images don't bleed through */
   backdrop-filter: blur(10px);
   z-index: 9999; /* Very high to stay above the grid */
@@ -260,7 +259,7 @@ html {
 /*Arrow styling*/
 
 .nav-arrow {
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   font-size: 3rem;
@@ -277,8 +276,8 @@ html {
   transform: translateY(-50%) scale(1.15);
 }
 
-.nav-arrow.left { left: -70px; }
-.nav-arrow.right { right: -70px; }
+.nav-arrow.left { left: 25px; }
+.nav-arrow.right { right: 25px; }
 
 @media (max-width: 700px) {
   .nav-arrow.left { left: 10px; }
