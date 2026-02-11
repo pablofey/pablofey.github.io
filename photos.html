@@ -229,6 +229,41 @@
   });
 </script>
 
+<script>
+let startX = 0;
+let isDragging = false;
+
+document.addEventListener("touchstart", e => {
+  const active = document.querySelector(".lightbox:target");
+  if (!active) return;
+
+  isDragging = true;
+  startX = e.touches[0].clientX;
+}, { passive: true });
+
+document.addEventListener("touchend", e => {
+  if (!isDragging) return;
+
+  const active = document.querySelector(".lightbox:target");
+  if (!active) return;
+
+  const endX = e.changedTouches[0].clientX;
+  const delta = endX - startX;
+
+  const threshold = 60;
+
+  if (delta < -threshold) {
+    active.querySelector(".nav-arrow.right")?.click();
+  }
+
+  if (delta > threshold) {
+    active.querySelector(".nav-arrow.left")?.click();
+  }
+
+  isDragging = false;
+}, { passive: true });
+</script>
+
 </body>
 </html>
 
