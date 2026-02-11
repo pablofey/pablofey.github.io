@@ -171,8 +171,8 @@ h2 {
   backdrop-filter: blur(10px);
   z-index: 9999; /* Very high to stay above the grid */
   justify-content: center;
-  align-items: flex-start; /* Keeps it at the top as requested */
-  padding: 40px 20px;
+  align-items: center;
+  padding: 20px;
 }
 
 .lightbox:target {
