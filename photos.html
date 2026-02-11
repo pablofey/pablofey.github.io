@@ -231,14 +231,28 @@
 
 <script>
 let startX = 0;
+let currentX = 0;
 let isDragging = false;
 
 document.addEventListener("touchstart", e => {
   const active = document.querySelector(".lightbox:target");
   if (!active) return;
 
-  isDragging = true;
   startX = e.touches[0].clientX;
+  isDragging = true;
+}, { passive: true });
+
+document.addEventListener("touchmove", e => {
+  if (!isDragging) return;
+
+  const active = document.querySelector(".lightbox:target");
+  if (!active) return;
+
+  currentX = e.touches[0].clientX;
+  const delta = currentX - startX;
+
+  active.querySelector(".lightbox-content").style.transform =
+    `translateX(${delta}px)`;
 }, { passive: true });
 
 document.addEventListener("touchend", e => {
@@ -247,10 +261,12 @@ document.addEventListener("touchend", e => {
   const active = document.querySelector(".lightbox:target");
   if (!active) return;
 
-  const endX = e.changedTouches[0].clientX;
-  const delta = endX - startX;
+  const delta = currentX - startX;
+  const threshold = window.innerWidth * 0.18;
 
-  const threshold = 60;
+  const content = active.querySelector(".lightbox-content");
+
+  content.style.transform = "";
 
   if (delta < -threshold) {
     active.querySelector(".nav-arrow.right")?.click();
@@ -261,11 +277,11 @@ document.addEventListener("touchend", e => {
   }
 
   isDragging = false;
-}, { passive: true });
+});
 </script>
-
 </body>
 </html>
+
 
 
 
